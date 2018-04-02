@@ -1,0 +1,8 @@
+bind = "0.0.0.0:5000"
+env_name = "LOCAL"
+max_requests = 1
+workers = 1
+timeout = 900000
+graceful-timeout = 2
+mongo_uri = "mongodb://localhost/appdb"
+db_name = "appdb"

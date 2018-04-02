@@ -1,0 +1,27 @@
+version: '3'
+networks:
+  default:
+    external: 
+      name: mayfly-net
+                
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dev-dockerfile
+    container_name: app_backend
+    environment:
+      - MF_MONGO_URI=mongodb://app_mongo/appdb
+      - MF_DB_NAME=appdb
+    depends_on:
+      - mongo-db
+    ports:
+     - "5000:5000"
+  mongo-db:
+    container_name: app_mongo
+    image: "mongo:latest"
+    restart: always
+    ports:
+      - "27017:27017"
+  
+  
